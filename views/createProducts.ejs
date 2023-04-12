@@ -1,0 +1,41 @@
+<%- include("partial/header") -%>
+
+<form class="" action="/createProducts" method="post">
+
+  <div class="">
+    <div class="input-group">
+      <input name="productName" class="form-control" aria-label="With textarea" placeholder="Product Name">
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">₹</span>
+      <input name="price" type="number" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Price">
+      <span class="input-group-text">.00</span>
+    </div>
+
+    <div class="input-group">
+      <textarea name="productDetails" class="form-control" aria-label="With textarea" placeholder="Product Details"></textarea>
+    </div>
+    <div class="">
+      <input name="warrenty" type="number" name="" value="" placeholder="Warrenty in Years">
+
+    </div>
+
+
+
+      <div class="input-group mb-3 imagge">
+        <div class="imageDiv imagge">
+
+        </div>
+        <input name="image_URL" type="text" class="form-control" placeholder="Image Url" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-primary addImage" type="button" id="button-addon2" onclick="createImage()">Add Image</button>
+      </div>
+
+    <div class="">
+      <button type="submit" name="button" class="btn btn-primary">Add Products</button>
+
+    </div>
+</form>
+
+
+<%- include("partial/footer") -%>

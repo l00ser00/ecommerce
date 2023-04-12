@@ -1,0 +1,96 @@
+<%- include("partial/header") -%>
+
+<div>
+  <% for (var i = 0; i < photoArr.length; i++) { %>
+  <div>
+    <img src="<%= photoArr[i] %>"
+      alt="" />
+  </div>
+  <% } %>
+
+  <div>
+    <h1><%= cusTitle %></h1>
+    <h5><%= cusPrice %> MRP(Price inclusive of all taxes)</h5>
+    <h4>Offer Price: 52900</h4>
+    <p>Price inclusive of Extra 10% OFF, Use coupon HW10</p>
+    <p>Total savings ₹ 40000(48% OFF)</p>
+    <div>
+      <h1>*Extra 10% Off</h1>
+      <h4>on minimum purchase of ₹3000 and above.</h4>
+      <p>
+        on decor, furnishings, tableware, and kitchenware{" "}
+        <strong>Use code- HW10</strong>
+      </p>
+    </div>
+    <div>
+      <p>Finance Offers</p>
+      <p>
+        <strong>No cost EMI Offer</strong>
+      </p>
+      <p>
+        0% Interest. 0% Down Payment. Upto 6 months EMI. On all Credit Card
+        of order above ₹10000/-{" "}
+      </p>
+    </div>
+    <div>
+      <input placeholder="Enter pin code" />
+      <button type="button" class="btn btn-outline-secondary">
+        Go
+      </button>
+      <p>Delivery Date</p>
+    </div>
+    <div>
+      <button class="btn btn-primary btn-lg">Buy Now</button>
+
+      <form class="" action="/cart" method="post">
+      <button name="cart" class="btn btn-secondary btn-lg" value="<%= cusTitle %>">Add to Cart</button>
+      </form>
+
+      <input type="number" />
+
+      <form class="" action="/likes" method="post">
+        <button name="liked" type="submit" class="btn btn-danger" value="<%= cusTitle %>"><i class="fa-solid fa-heart"></i></button>
+      </form>
+
+    </div>
+    <div>
+      <p>
+        <i class="fa-solid fa-share-nodes"> </i> Share this product
+      </p>
+    </div>
+
+
+    <div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+    <p>This is a paragraph in the dropdown menu.</p>
+  </div>
+</div>
+
+<div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+    <p>This is a paragraph in the dropdown menu.</p>
+  </div>
+</div>
+
+
+    <!-- <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <p><%= cusDetails %></p>
+      </div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <p><%= cusWarrenty %></p>
+      </div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <p>sdofijfiojf</p>
+      </div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <p>sdofijfiojf</p>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<%- include("partial/footer") -%>

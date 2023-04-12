@@ -1,0 +1,22 @@
+<%- include("partial/header") -%>
+
+<% for (var i = 0; i < array.length; i++) { %>
+<a href="/products/<%= array[i].title %>">
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+      <h2 class="featurette-heading fw-normal lh-1"><%= array[i].title %></h2>
+      <p class="lead"><%= array[i].price %></p>
+    </div>
+    <div class="col-md-5 order-md-1">
+      <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="<%= array[i].snap %>" data-holder-rendered="true" style="width: 250px; height: 250px;">
+    </div>
+  </div>
+</a>
+<% } %>
+
+<div class="d-grid gap-2">
+  <a class="btn btn-primary" type="button" href="/checkout">Proceed to checkout</a>
+
+</div>
+
+<%- include("partial/footer") -%>

@@ -1,0 +1,48 @@
+body{
+  background-color: black;
+  color: #E8E2E2;
+}
+
+div{
+  padding: 2% 10%;
+
+}
+
+.text_color{
+  color: #000;
+}
+
+.imagge{
+  padding-left: 0.5%;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: static;
+  background-color: grey;
+  min-width: 160px;
+  z-index: 1;
+  padding: 12px;
+}
+
+.dropdown-content p {
+  margin: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

@@ -1,0 +1,49 @@
+<div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <span class="input-group-text" id="basic-addon2">
+          @example.com
+        </span>
+      </div>
+      <div>
+        <button class="btn btn-outline-primary">
+          <i class="fa-brands fa-google-play"></i>Android
+        </button>
+        <button class="btn btn-secondary">
+          <i class="fa-brands fa-apple"></i>Android
+        </button>
+      </div>
+      <div>
+        <p>contact: 09348394890</p>
+        <p>Email: nomail@gmail.com</p>
+      </div>
+      <div>
+        <p>Copyright 2023 L00SEROO</p>
+      </div>
+
+<script>
+  function createImage() {
+    if(document.getElementsByName("image_URL").length !== 10){
+      const newInputt = document.createElement("input");
+      newInputt.type = "text";
+      newInputt.placeholder = "Image URL";
+      newInputt.name = "image_URL";
+
+      const container = document.querySelector(".imageDiv");
+
+      container.appendChild(newInputt);
+    }
+    else {
+      alert("You can use max of 10 images");
+    }
+  }
+
+</script>
+
+</body>
+</html>
