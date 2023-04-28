@@ -1,0 +1,12 @@
+<%- include("partial/header") -%>
+  <h3><%= orders[0].email %></h3>
+  <% for (let i = orders.length -1; i >= 0 ; i++) { %>
+        <p>Name: <%= orders[i].name %></p>
+        <p>Address: <%= orders[i].address %></p>
+        <p>Phone no: <%= orders[i].phone %></p>
+        <% for (let j = 0; j < orders.length; j++) { %>
+              <p>Product name: <%= orders[i].product[j].name %></p>
+              <p>Product quantity: <%= orders[i].product[j].quantity</p>
+        <% } %>
+  <% } %>
+<%- include("partial/footer") -%>

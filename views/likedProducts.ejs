@@ -1,11 +1,19 @@
 <%- include("partial/header") -%>
-
+<% if(array.length === 0) {%>
+  <h3 class="empty">You havn't added any products!</h3>
+  <% } %>
 <% for (var i = 0; i < array.length; i++) { %>
 <a href="/products/<%= array[i].titlee %>">
   <div class="row featurette">
     <div class="col-md-7 order-md-2">
       <h2 class="featurette-heading fw-normal lh-1"><%= array[i].titlee %></h2>
       <p class="lead"><%= array[i].detaill %></p>
+
+      <form action="/delete" method="post">
+        <input type="hidden" name="pageName" value="likes">
+        <button type="submit" name="title" value="<%= array[i].titlee %>"><i class="fa-solid fa-trash-can"></i></button>
+      </form>
+
     </div>
     <div class="col-md-5 order-md-1">
       <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="<%= array[i].snap[0] %>" data-holder-rendered="true" style="width: 250px; height: 250px;">

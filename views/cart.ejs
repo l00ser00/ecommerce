@@ -1,22 +1,109 @@
 <%- include("partial/header") -%>
+<% if(array.length === 0) {%>
+<img class="empty" src="https://mir-s3-cdn-cf.behance.net/projects/404/95974e121862329.Y3JvcCw5MjIsNzIxLDAsMTM5.png" alt="">
+<% } %>
 
 <% for (var i = 0; i < array.length; i++) { %>
+  <div class="cart_itemm">
 <a href="/products/<%= array[i].title %>">
   <div class="row featurette">
     <div class="col-md-7 order-md-2">
       <h2 class="featurette-heading fw-normal lh-1"><%= array[i].title %></h2>
-      <p class="lead"><%= array[i].price %></p>
+      <p class="lead">Offer Price: ₹ <%= array[i].price %></p>
+
     </div>
     <div class="col-md-5 order-md-1">
       <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="<%= array[i].snap %>" data-holder-rendered="true" style="width: 250px; height: 250px;">
     </div>
   </div>
 </a>
+
+<div class="flex-item item-2">
+  <button class="btn btn-light decrement-cart" >-</button>
+  <button class="count-cart"><%= array[i].quantity %></button>
+  <button class="btn btn-light increment-cart" >+</button>
+</div>
+
+<form action="/delete" method="post">
+  <input type="hidden" name="pageName" value="cart">
+  <button type="submit" name="title" value="<%= array[i].title %>"><i class="fa-solid fa-trash-can"></i></button>
+</form>
+</div>
 <% } %>
 
 <div class="d-grid gap-2">
-  <a class="btn btn-primary" type="button" href="/checkout">Proceed to checkout</a>
-
+  <button class="btn btn-primary check" type="button">Proceed to checkout</button>
 </div>
+
+<% for (var i = 0; i < array.length; i++) {
+  array[i]
+} %>
+
+<script>
+  // Get all the sets of buttons
+const cartItems = document.querySelectorAll('.flex-item');
+
+// Loop through each set of buttons and add event listeners
+cartItems.forEach((cartItem) => {
+  const incrementBtn = cartItem.querySelector('.increment-cart');
+  const decrementBtn = cartItem.querySelector('.decrement-cart');
+  const countCart = cartItem.querySelector('.count-cart');
+
+  // Add event listener for increment button
+  incrementBtn.addEventListener('click', () => {
+    let count = parseInt(countCart.innerHTML);
+    count++;
+    countCart.innerHTML = count.toString();
+  });
+
+  // Add event listener for decrement button
+  decrementBtn.addEventListener('click', () => {
+    let count = parseInt(countCart.innerHTML);
+    if (count > 1) {
+      count--;
+      countCart.innerHTML = count.toString();
+    }
+  });
+});
+
+//sending updated quantity to app.js
+document.querySelector(".check").addEventListener("click", function() {
+  const cartI = document.querySelectorAll(".cart_itemm");
+  const data = [];
+
+  cartI.forEach((item) => {
+    const h22 = item.querySelector("h2").innerHTML;
+    const quan = item.querySelector(".count-cart").innerHTML;
+    data.push({
+      heading: h22,
+      quanti: quan });
+  });
+
+  const xhr = new XMLHttpRequest();
+
+  // Open a POST request to the /updatecount endpoint
+  xhr.open("POST", "/updateCount");
+
+  // Set the request headers
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Request was successful
+        window.location.href = '/checkout';
+      } else {
+        // Request failed
+        console.error('Request failed:', xhr.status);
+      }
+    }
+  };
+
+
+  // Send the data to the server
+  xhr.send(JSON.stringify({cow: data}));
+});
+
+</script>
 
 <%- include("partial/footer") -%>

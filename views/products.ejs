@@ -1,20 +1,48 @@
 <%- include("partial/header") -%>
 
-<div>
-  <% for (var i = 0; i < photoArr.length; i++) { %>
-  <div>
-    <img src="<%= photoArr[i] %>"
-      alt="" />
-  </div>
-  <% } %>
+<div class="d-flex">
 
-  <div>
+  <div id="carouselExampleIndicators" class="carousel slide h-100 ">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+
+      <% for (let i = 1; i < photoArr.length; i++) { %>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= i %>" aria-label="Slide <%= i %>"></button>
+      <% } %>
+
+    </div>
+    <div class="carousel-inner w-100 h-100 cara-rem-padding">
+      <div class="carousel-item active">
+        <img src="<%= photoArr[0] %>" class="d-block w-100" alt="">
+      </div>
+
+      <% for (let i = 1; i < photoArr.length; i++) { %>
+      <div class="carousel-item">
+        <img src="<%= photoArr[i] %>" class="d-block w-100" alt="">
+      </div>
+      <% } %>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <div class="flex-fill no-padding">
     <h1><%= cusTitle %></h1>
     <h5><%= cusPrice %> MRP(Price inclusive of all taxes)</h5>
     <h4>Offer Price: 52900</h4>
     <p>Price inclusive of Extra 10% OFF, Use coupon HW10</p>
     <p>Total savings ₹ 40000(48% OFF)</p>
-    <div>
+
+    <div class="no-padding">
       <h1>*Extra 10% Off</h1>
       <h4>on minimum purchase of ₹3000 and above.</h4>
       <p>
@@ -22,7 +50,7 @@
         <strong>Use code- HW10</strong>
       </p>
     </div>
-    <div>
+    <div class="no-padding">
       <p>Finance Offers</p>
       <p>
         <strong>No cost EMI Offer</strong>
@@ -32,47 +60,56 @@
         of order above ₹10000/-{" "}
       </p>
     </div>
-    <div>
+    <div class="no-padding">
       <input placeholder="Enter pin code" />
       <button type="button" class="btn btn-outline-secondary">
         Go
       </button>
       <p>Delivery Date</p>
     </div>
-    <div>
-      <button class="btn btn-primary btn-lg">Buy Now</button>
+
+    <div class="flexx no-padding">
+      <form class="" action="/buynow" method="post">
+        <input type="hidden" name="buyNow" value="buyNow">
+        <button name="buy_now" class="btn btn-primary btn-lg flexx-item item-1" value="<%= cusTitle %>" type="submit">Buy Now</button>
+      </form>
+
+      <div class="flex-item item-2">
+        <button class="btn btn-light" id="decrement">-</button>
+        <button id="count">1</button>
+        <button class="btn btn-light" id="increment">+</button>
+      </div>
 
       <form class="" action="/cart" method="post">
-      <button name="cart" class="btn btn-secondary btn-lg" value="<%= cusTitle %>">Add to Cart</button>
+        <button name="cart" class="btn btn-secondary btn-lg flexx-item item-3" value="<%= cusTitle %>">Add to Cart</button>
+        <input type="hidden" name="quantiti" value="1" id="q-hidden">
       </form>
 
-      <input type="number" />
-
-      <form class="" action="/likes" method="post">
-        <button name="liked" type="submit" class="btn btn-danger" value="<%= cusTitle %>"><i class="fa-solid fa-heart"></i></button>
+      <form class="flexx-item" action="/likes" method="post">
+        <button name="liked" type="submit" class="btn btn-danger item-4" value="<%= cusTitle %>"><i class="fa-solid fa-heart"></i></button>
       </form>
-
     </div>
-    <div>
+
+    <div class="no-padding">
       <p>
         <i class="fa-solid fa-share-nodes"> </i> Share this product
       </p>
     </div>
 
 
-    <div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-    <p>This is a paragraph in the dropdown menu.</p>
-  </div>
-</div>
+    <div class="dropdown no-padding">
+      <button class="dropbtn ">Dropdown</button>
+      <div class="dropdown-content">
+        <p>This is a paragraph in the dropdown menu.</p>
+      </div>
+    </div>
 
-<div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-    <p>This is a paragraph in the dropdown menu.</p>
-  </div>
-</div>
+    <div class="dropdown no-padding">
+      <button class="dropbtn ">Dropdown</button>
+      <div class="dropdown-content">
+        <p>This is a paragraph in the dropdown menu.</p>
+      </div>
+    </div>
 
 
     <!-- <div class="dropdown">
@@ -88,8 +125,8 @@
       </div>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <p>sdofijfiojf</p>
-      </div> -->
-    </div>
+      </div>
+    </div> -->
   </div>
 </div>
 
